@@ -1,0 +1,10 @@
+#:kivy 2.0.0
+
+<CanvasWidget>:
+    Button:
+        text: "Delete"
+        right: root.right
+        top: root.top
+        size: 80, 40
+        on_release:
+            root.clear_canvas()
