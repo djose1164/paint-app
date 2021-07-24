@@ -1,5 +1,20 @@
 #:kivy 2.0.0
+#:import C kivy.utils.get_color_from_hex
 
+# Rule for color buttons
+<ColorButton@RadioButton>:
+    group: "color"
+    on_release:
+        app.canvas_widget.set_color(self.background_color)
+    background_normal:
+        "../img/color_button_normal.png"
+    background_down:
+        "../img/color_button_down.png"
+    border:
+        # The smaller the border, smaller the button.
+        3, 3, 3, 3
+
+# Root's rule.
 <CanvasWidget>:
     Button:
         text: "Delete"
@@ -8,3 +23,24 @@
         size: 80, 40
         on_release:
             root.clear_canvas()
+
+    BoxLayout:
+        orientation: "horizontal"
+        padding: 3
+        spacing: 3
+        xy: 0,0
+        size: root.width, 40
+
+        # Default color.
+        ColorButton:
+            background_color:
+                C("#2980B9")
+            state: "down"
+
+        ColorButton:
+            background_color:
+                C("#16A085")
+        
+        ColorButton:
+            background_color:
+                C("#27AE60")
