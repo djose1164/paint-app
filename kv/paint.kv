@@ -1,6 +1,16 @@
 #:kivy 2.0.0
 #:import C kivy.utils.get_color_from_hex
 
+<LineWidthButton@ColorButton>:
+    group:
+        "line_width"
+    on_release:
+        app.canvas_widget.set_line_width(self.text)
+    color:
+        C("#2C3E50")
+    background_color:
+        C("#ECF0F1")
+
 # Rule for color buttons
 <ColorButton@RadioButton>:
     group: "color"
@@ -44,3 +54,21 @@
         ColorButton:
             background_color:
                 C("#27AE60")
+
+    BoxLayout:
+        orientation: "vertical"
+        padding: 2
+        spacing: 2
+        x: 0
+        top: root.top
+        size: 80, 110
+
+        LineWidthButton:
+            text: "Thin"
+        
+        LineWidthButton:
+            text: "Normal"
+            state: "down"
+        
+        LineWidthButton:
+            text: "Thick"
